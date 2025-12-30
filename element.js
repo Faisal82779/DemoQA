@@ -8,7 +8,7 @@ async function testRun() {
     await driver.get("https://demoqa.com/");
     await driver.manage().window().maximize();
     await driver.sleep(1500);
-    const el = await driver.findElement(By.css(".card-body"));
+    const el = await driver.findElement(By.xpath("(//div[@class='card-body'])[1]"));
     await driver.executeScript("arguments[0].scrollIntoView({block:'center'});", el);
     await el.click();
 
