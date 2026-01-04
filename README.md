@@ -1,4 +1,4 @@
-# Selenium Automation Practice – DemoQA (Node.js)
+# Selenium Automation – DemoQA 
 
 This repository contains my Selenium WebDriver automation practice using **JavaScript (Node.js)** on the **DemoQA** website.  
 The goal of this project is to learn and practice real-world Selenium concepts through hands-on automation.
@@ -11,7 +11,6 @@ The goal of this project is to learn and practice real-world Selenium concepts t
 ---
 
 
----
 
 ## ✅ Automated Sections
 
