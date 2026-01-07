@@ -12,42 +12,73 @@ The goal of this project is to learn and practice real-world Selenium concepts t
 
 
 
-## ✅ Automated Sections
+## ✅ Automated Sections (Full Website Coverage)
 
 ### 🔸 Elements
-- Text Box
-- Check Box (expand / collapse / select)
-- Radio Buttons
-- Web Tables (search, edit, add, delete)
-- Buttons (double click, right click, single click)
-- Links (new tab handling & API status links)
-- Broken Links & Images
-- Upload and Download
-- Dynamic Properties (enable, visible, color change, random ID)
-
-### 🔸 Forms
-- Student Registration Form
-- Text input fields
-- Radio buttons & checkboxes
-- Date picker (random date selection)
-- Auto-complete subject input
-- File upload
-- State & city dropdown (random selection using condition logic)
-- Form submission
+- Text Box  
+- Check Box (expand / collapse / select)  
+- Radio Buttons  
+- Web Tables (search, edit, add, delete)  
+- Buttons (double click, right click, single click)  
+- Links (new tab handling & API status validation)  
+- Broken Links & Images  
+- Upload and Download  
+- Dynamic Properties (enable, visible, color change, random ID)  
 
 ---
 
-## 🔹 Features & Concepts Covered
-- Selenium WebDriver with JavaScript
-- XPath locator strategies
-- JavaScript execution (`executeScript`)
-- Window / tab handling
-- Mouse actions (double click, right click)
-- File upload handling
-- Random data generation
-- Conditional logic (`if / else if`)
-- Dynamic element handling
-- Scrolling into view
+### 🔸 Forms
+- Student Registration Form  
+- Text input fields  
+- Radio buttons & checkboxes  
+- Date picker (random date selection)  
+- Auto-complete subject input  
+- File upload  
+- State & city dropdown (random selection using conditional logic)  
+- Form submission validation  
+
+---
+
+### 🔸 Alerts, Frame & Windows
+- Browser Windows (new tab, new window, message window handling)  
+- Alerts (simple alert, confirmation alert, prompt alert)  
+- Frames (single frame handling)  
+- Nested Frames (parent & child frame switching)  
+- Modal Dialogs (small & large modal handling)  
+
+---
+
+### 🔸 Widgets
+- Accordion  
+- Auto Complete (single & multiple input)  
+- Date Picker  
+- Slider  
+- Progress Bar  
+- Tabs  
+- Tool Tips  
+- Menu  
+- Select Menu  
+
+---
+
+### 🔸 Interactions
+- Sortable (list & grid)  
+- Selectable  
+- Resizable  
+- Droppable  
+- Draggable  
+
+---
+
+### 🔸 Book Store Application
+- User login  
+- Book search  
+- Book selection  
+- Add to collection  
+- Remove book from collection  
+- Profile and logout flow  
+
+> ⚠️ **Note:** Interactions & Book Store Application automation is currently **in progress / partially implemented**.
 
 ---
 
@@ -68,7 +99,8 @@ The goal of this project is to learn and practice real-world Selenium concepts t
    ```bash
    node element.js
    node from.js
+   node browser.js
   If you want to Run all in once, then
   ```bash
-   node element.js && node from.js
+   node element.js && node from.js && node browser.js
 
