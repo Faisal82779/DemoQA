@@ -76,6 +76,100 @@ async function testRun() {
     await driver.executeScript("arguments[0].scrollIntoView({block:'center'});", el);
     await el.click();
 
+    //Select Menu
+    const e11 = await driver.findElement(By.xpath(`//span[text()="Select Menu"]`));
+    await driver.executeScript("arguments[0].scrollIntoView({block:'center'});", e11);
+    await e11.click();
+    const selectOptionBtn = await driver.findElement(By.xpath(`//div[text()="Select Option"]`));
+    await driver.executeScript("arguments[0].scrollIntoView({block:'center'});", selectOptionBtn);
+    await driver.sleep(1000);
+    try {
+        await selectOptionBtn.click();
+    } catch (e) {
+        await driver.executeScript("arguments[0].click();", selectOptionBtn);
+    }
+    await driver.sleep(1500);
+    let selectValue = selectValues[await rendomValue(0, selectValues.length - 1)];
+    const selectInput1 = await driver.findElement(By.xpath(`//input[@id="react-select-2-input"]`));
+    await driver.sleep(500);
+    await selectInput1.sendKeys(selectValue);
+    await driver.sleep(1000);
+    await selectInput1.sendKeys(Key.ENTER);
+    await driver.sleep(1500);
+    
+    const selectTitleBtn = await driver.findElement(By.xpath(`//div[text()="Select Title"]`));
+    await driver.executeScript("arguments[0].scrollIntoView({block:'center'});", selectTitleBtn);
+    await driver.sleep(1000);
+    try {
+        await selectTitleBtn.click();
+    } catch (e) {
+        await driver.executeScript("arguments[0].click();", selectTitleBtn);
+    }
+    await driver.sleep(1500);
+    let selectOne = selectOnes[await rendomValue(0, selectOnes.length - 1)];
+    const selectInput2 = await driver.findElement(By.xpath(`//input[@id="react-select-3-input"]`));
+    await driver.sleep(500);
+    await selectInput2.sendKeys(selectOne);
+    await driver.sleep(1000);
+    await selectInput2.sendKeys(Key.ENTER);
+    await driver.sleep(1500);
+    const oldSelectMenu = await driver.findElement(By.xpath(`//select[@id="oldSelectMenu"]`));
+    await driver.executeScript("arguments[0].scrollIntoView({block:'center'});", oldSelectMenu);
+    await driver.sleep(1000);
+    try {
+        await oldSelectMenu.click();
+    } catch (e) {
+        await driver.executeScript("arguments[0].click();", oldSelectMenu);
+    }
+    await driver.sleep(2000);
+    let colorIndex = await rendomValue(0, 1);
+    if (colorIndex === 1) {
+        let indexColor = await rendomValue(0, aC.length - 1);
+        const e12 = await driver.findElement(By.xpath(`//option[text()="${aC[indexColor]}"]`));
+        await driver.executeScript("arguments[0].scrollIntoView({block:'center'});", e12);
+        await e12.click();
+    } else {
+        let indexColor = await rendomValue(0, bC.length - 1);
+        const e12 = await driver.findElement(By.xpath(`//option[text()="${bC[indexColor]}"]`));
+        await driver.executeScript("arguments[0].scrollIntoView({block:'center'});", e12);
+        await e12.click();
+    }
+    await driver.sleep(1500);
+    
+    const multiSelectBtn = await driver.findElement(By.xpath(`//div[text()="Select..."]`));
+    await driver.executeScript("arguments[0].scrollIntoView({block:'center'});", multiSelectBtn);
+    await driver.sleep(1000);
+    try {
+        await multiSelectBtn.click();
+    } catch (e) {
+        await driver.executeScript("arguments[0].click();", multiSelectBtn);
+    }
+    await driver.sleep(1500);
+    for (let i = 0; i < 4; i++) {
+        let coloresName = multiSelectColor[await uniquRandomValue(0, multiSelectColor.length - 1)];
+        const selectInput4 = await driver.findElement(By.xpath(`//input[@id="react-select-4-input"]`));
+        await selectInput4.sendKeys(coloresName);
+        await driver.sleep(1000);
+        await selectInput4.sendKeys(Key.ENTER);
+        await driver.sleep(1000);
+    }
+    await driver.sleep(1500);
+    
+    const carSelectDiv = await driver.findElement(By.xpath(`(//div[@class="css-xb97g8"])[4]`));
+    await driver.executeScript("arguments[0].scrollIntoView({block:'center'});", carSelectDiv);
+    await driver.sleep(1000);
+    try {
+        await carSelectDiv.click();
+    } catch (e) {
+        await driver.executeScript("arguments[0].click();", carSelectDiv);
+    }
+    await driver.sleep(1500);
+    let selectCar = car[await rendomValue(0, car.length - 1)];
+    const e13 = await driver.findElement(By.xpath(`//option[text()="${selectCar}"]`));
+    await driver.executeScript("arguments[0].scrollIntoView({block:'center'});", e13);
+    await e13.click();
+
+//Accordian
     await driver.findElement(By.xpath(`(//li[@id="item-0"])[4]`)).click();
     await driver.sleep(1500);
     await accordian(driver, "Fist Time");
@@ -88,7 +182,7 @@ async function testRun() {
     await driver.sleep(1000);
     await accordian(driver, "Third Time");
 
-
+//Auto Complete
     await driver.findElement(By.xpath(`//span[text()="Auto Complete"]`)).click();
     await driver.sleep(1500);
     let multiColor = await driver.findElement(By.xpath(`//input[@id="autoCompleteMultipleInput"]`));
@@ -118,6 +212,7 @@ async function testRun() {
     await singleColor.sendKeys(Key.ENTER);
     await driver.sleep(1500);
 
+//Data Picker
     const ee3 = await driver.findElement(By.xpath(`(//li[@id="item-2"])[3]`));
     await driver.executeScript("arguments[0].scrollIntoView({block:'center'});", ee3);
     await ee3.click();
@@ -173,18 +268,17 @@ async function testRun() {
     let maxIndex = timeItems.length;
     let randomTime = await rendomValue(1, maxIndex);
     await timeItems[randomTime - 1].click();
-
     await driver.sleep(1500);
+
+    //Slider
     const e6 = await driver.findElement(By.xpath(`//span[text()="Slider"]`));
     await driver.executeScript("arguments[0].scrollIntoView({block:'center'});", e6);
     await e6.click();
     await driver.sleep(1000);
-
     let slider = await driver.findElement(By.xpath(`//input[@type="range"]`));
     const desiredValue = await rendomValue(10, 95); // The value you want to set the slider to
     // Use JavaScript to set the value attribute and trigger 'input' and 'change' events
     await driver.executeScript("arguments[0].value = arguments[1]; arguments[0].dispatchEvent(new Event('input')); arguments[0].dispatchEvent(new Event('change'));", slider, desiredValue);
-
     await driver.sleep(1500);
     const e7 = await driver.findElement(By.xpath(`(//li[@id="item-4"])[3]`));
     await driver.executeScript("arguments[0].scrollIntoView({block:'center'});", e7);
@@ -242,7 +336,6 @@ async function testRun() {
     await tabClass(driver, "Second");
     await driver.findElement(By.xpath(`//a[@id="demo-tab-use"]`)).click();
     await tabClass(driver, "Third");
-
 
     const e9 = await driver.findElement(By.xpath(`//span[text()="Tool Tips"]`));
     await driver.executeScript("arguments[0].scrollIntoView({block:'center'});", e9);
@@ -322,50 +415,7 @@ async function testRun() {
     await driver.sleep(1000);
     let mainItem3 = await driver.findElement(By.xpath(`//a[text()="Main Item 3"]`));
     await driver.actions({ async: true }).move({ origin: mainItem3 }).perform();
-    await driver.sleep(2000);
-
-    const e11 = await driver.findElement(By.xpath(`//span[text()="Select Menu"]`));
-    await driver.executeScript("arguments[0].scrollIntoView({block:'center'});", e11);
-    await e11.click();
-    await driver.sleep(1500);
-    await driver.findElement(By.xpath(`//div[text()="Select Option"]`)).click();
-    await driver.sleep(500);
-    let selectValue = selectValues[await rendomValue(0, selectValues.length - 1)];
-    await driver.findElement(By.xpath(`//input[@id="react-select-2-input"]`)).sendKeys(selectValue, Key.ENTER);
-    await driver.sleep(1500);
-    await driver.findElement(By.xpath(`//div[text()="Select Title"]`)).click();
-    await driver.sleep(500);
-    let selectOne = selectOnes[await rendomValue(0, selectOnes.length - 1)];
-    await driver.findElement(By.xpath(`//input[@id="react-select-3-input"]`)).sendKeys(selectOne, Key.ENTER);
-    await driver.sleep(1500);
-    await driver.findElement(By.xpath(`//select[@id="oldSelectMenu"]`)).click();
-    let colorIndex = await rendomValue(0, 1);
-    if (colorIndex === 1) {
-        let indexColor = await rendomValue(0, aC.length - 1);
-        const e12 = await driver.findElement(By.xpath(`//option[text()="${aC[indexColor]}"]`));
-        await driver.executeScript("arguments[0].scrollIntoView({block:'center'});", e12);
-        await e12.click();
-    } else {
-        let indexColor = await rendomValue(0, bC.length - 1);
-        const e12 = await driver.findElement(By.xpath(`//option[text()="${bC[indexColor]}"]`));
-        await driver.executeScript("arguments[0].scrollIntoView({block:'center'});", e12);
-        await e12.click();
-    }
-    await driver.sleep(1500);
-    await driver.findElement(By.xpath(`//div[text()="Select..."]`)).click();
-    await driver.sleep(1000);
-    for (let i = 0; i < 4; i++) {
-        let coloresName = multiSelectColor[await uniquRandomValue(0, multiSelectColor.length - 1)];
-        await driver.findElement(By.xpath(`//input[@id="react-select-4-input"]`)).sendKeys(coloresName, Key.ENTER);
-        await driver.sleep(800);
-    }
-    await driver.sleep(1500);
-    await driver.findElement(By.xpath(`(//div[@class="css-xb97g8"])[4]`)).click();
-    await driver.sleep(1500);
-    let selectCar = car[await rendomValue(0, car.length - 1)];
-    const e13 = await driver.findElement(By.xpath(`//option[text()="${selectCar}"]`));
-    await driver.executeScript("arguments[0].scrollIntoView({block:'center'});", e13);
-    await e13.click();
+   
     await driver.sleep(3000);
     await driver.quit();
 
