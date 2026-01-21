@@ -100,7 +100,8 @@ The goal of this project is to learn and practice real-world Selenium concepts t
    node element.js
    node from.js
    node browser.js
+   node widgets.js
   If you want to Run all in once, then
   ```bash
-   node element.js && node from.js && node browser.js
+   node element.js && node from.js && node browser.js && node widgets.js
 
