@@ -70,18 +70,6 @@ The goal of this project is to learn and practice real-world Selenium concepts t
 
 ---
 
-### 🔸 Book Store Application
-- User login  
-- Book search  
-- Book selection  
-- Add to collection  
-- Remove book from collection  
-- Profile and logout flow  
-
-> ⚠️ **Note:** Interactions & Book Store Application automation is currently **in progress / partially implemented**.
-
----
-
 ## 🛠 Tech Stack
 - **Language:** JavaScript
 - **Automation Tool:** Selenium WebDriver
@@ -101,7 +89,8 @@ The goal of this project is to learn and practice real-world Selenium concepts t
    node from.js
    node browser.js
    node widgets.js
+   node interactions.js
   If you want to Run all in once, then
   ```bash
-   node element.js && node from.js && node browser.js && node widgets.js
+   node element.js && node from.js && node browser.js && node widgets.js && node interactions.js
 
