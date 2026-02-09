@@ -1,6 +1,12 @@
 import webdriver from "selenium-webdriver";
 const { By, Builder, Browser } = webdriver;
 
+async function avoidClickElementInteraction(driver, element) {
+    const e = await driver.findElement(By.xpath(`${element}`));
+    await driver.executeScript("arguments[0].scrollIntoView({block:'center'});", e);
+    await e.click();
+}
+
 async function rendomValue(min, max) {
     min = Math.ceil(min);
     max = Math.floor(max);
@@ -20,18 +26,14 @@ async function testRun() {
     await driver.get("https://demoqa.com/");
     await driver.manage().window().maximize();
     await driver.sleep(1500);
-    const el = await driver.findElement(By.xpath("(//div[@class='card-body'])[2]"));
-    await driver.executeScript("arguments[0].scrollIntoView({block:'center'});", el);
-    await el.click();
+    await avoidClickElementInteraction(driver, "(//div[@class='card-body'])[2]");
     await driver.sleep(1500);
     await driver.findElement(By.xpath("(//li[@id='item-0'])[2]")).click();
     await driver.sleep(1500);
     await driver.findElement(By.xpath("//input[@id='firstName']")).sendKeys(firstName);
     await driver.findElement(By.xpath("//input[@id='lastName']")).sendKeys(lastName);
     await driver.findElement(By.xpath("//input[@id='userEmail']")).sendKeys(email);
-    const el1 = await driver.findElement(By.xpath("//label[text()='Male']"));
-    await driver.executeScript("arguments[0].scrollIntoView({block:'center'});", el1);
-    await el1.click();
+    await avoidClickElementInteraction(driver,`//label[text()='Male']`);
     await driver.findElement(By.xpath("//input[@id='userNumber']")).sendKeys(mobile);
     await driver.findElement(By.xpath("//input[@id='dateOfBirthInput']")).click();
     await driver.sleep(1500);
@@ -65,9 +67,7 @@ async function testRun() {
     await driver.findElement(By.xpath(`//textarea[@id = "currentAddress"]`)).sendKeys(currentAddress);
     await driver.sleep(1500);
 
-    const stateEl = await driver.findElement(By.xpath(`(//div[@class=" css-yk16xz-control"])[1]`));
-    await driver.executeScript("arguments[0].scrollIntoView({block:'center'});", stateEl);
-    await stateEl.click();
+    await avoidClickElementInteraction(driver, `(//div[@class=" css-yk16xz-control"])[1]`);
     await driver.sleep(1500);
 
     let randomStateIndex = await rendomValue(0, stateCity.length - 1);//random state pick from array.
